@@ -109,6 +109,7 @@ class WikiReader:
             u"「注」という名前のグループの",
             u"タグがありません",
             u"\\n。",
+            "&"
         ]
 
         content = self.exclude(content, exclude_list)
@@ -116,9 +117,6 @@ class WikiReader:
         # 最後の文に問題があれば除去する
         if self.check_last_sentence_error(content) is False:
             content = self.remove_last_sentence(content)
-
-        # &はエラーになるので除去
-        content = content.replace("&", "")
 
         return content
 
